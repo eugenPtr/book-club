@@ -70,6 +70,20 @@ class RomannumeralsApplicationTests {
         assertEquals(arabicToRoman(11), "XI");
     }
 
+    @Test
+    void test_NumberTwelveIsTranslatedCorrectly () {
+        assertEquals(arabicToRoman(12), "XII");
+    }
+
+    @Test
+    void test_NumberThirteenIsTranslatedCorrectly () {
+        assertEquals(arabicToRoman(13), "XIII");
+    }
+
+    @Test
+    void test_NumberFourteenIsTranslatedCorrectly () {
+        assertEquals(arabicToRoman(14), "XIV");
+    }
 
 	private String arabicToRoman(int i) {
         StringBuilder result = new StringBuilder();
@@ -79,8 +93,11 @@ class RomannumeralsApplicationTests {
             put(10, "X");
         }};
 
-        if (i == 10-1) return arabicToRomanMap.get(1) + arabicToRomanMap.get(10);
-        if (i == 5-1) return arabicToRomanMap.get(1) + arabicToRomanMap.get(5);
+        if (i == 15-1) return arabicToRomanMap.get(10) + arabicToRomanMap.get(1) + arabicToRomanMap.get(5);
+
+        if (arabicToRomanMap.keySet().contains(i + 1)) {
+            return arabicToRomanMap.get(1) + arabicToRomanMap.get(i + 1);
+        }
 
         while (i > 0) {
             int biggestValue = 0;
