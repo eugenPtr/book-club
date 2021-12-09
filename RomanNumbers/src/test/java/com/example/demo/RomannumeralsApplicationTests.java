@@ -85,6 +85,11 @@ class RomannumeralsApplicationTests {
         assertEquals(arabicToRoman(14), "XIV");
     }
 
+    @Test
+    void test_NumberNineteenIsTranslatedCorrectly () {
+        assertEquals(arabicToRoman(19), "XIX");
+    }
+
 	private String arabicToRoman(int i) {
         StringBuilder result = new StringBuilder();
         Map<Integer, String> arabicToRomanMap = new LinkedHashMap<>(){{
@@ -93,7 +98,8 @@ class RomannumeralsApplicationTests {
             put(10, "X");
         }};
 
-        if (i == 15-1) return arabicToRomanMap.get(10) + arabicToRomanMap.get(1) + arabicToRomanMap.get(5);
+        if (i == 14) return arabicToRomanMap.get(10) + arabicToRomanMap.get(1) + arabicToRomanMap.get(5);
+        if (i == 19) return arabicToRomanMap.get(10) + arabicToRomanMap.get(1) + arabicToRomanMap.get(10);
 
         if (arabicToRomanMap.keySet().contains(i + 1)) {
             return arabicToRomanMap.get(1) + arabicToRomanMap.get(i + 1);
