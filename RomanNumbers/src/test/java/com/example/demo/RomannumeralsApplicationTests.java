@@ -90,16 +90,25 @@ class RomannumeralsApplicationTests {
         assertEquals(arabicToRoman(19), "XIX");
     }
 
+    @Test
+    void test_NumberFortyNineIsTranslatedCorrectly () {
+        assertEquals(arabicToRoman(49), "IL");
+    }
+
+    @Test
+    void test_NumberFiftyIsTranslatedCorrectly () {
+        assertEquals(arabicToRoman(50), "L");
+    }
+
 	private String arabicToRoman(int i) {
         StringBuilder result = new StringBuilder();
         Map<Integer, String> arabicToRomanMap = new LinkedHashMap<>(){{
 	        put(1, "I");
-	        put(5, "V");
+            put(4, "IV");
+            put(5, "V");
+            put(9, "IX");
             put(10, "X");
         }};
-
-        if (i == 14) return arabicToRomanMap.get(10) + arabicToRomanMap.get(1) + arabicToRomanMap.get(5);
-        if (i == 19) return arabicToRomanMap.get(10) + arabicToRomanMap.get(1) + arabicToRomanMap.get(10);
 
         if (arabicToRomanMap.keySet().contains(i + 1)) {
             return arabicToRomanMap.get(1) + arabicToRomanMap.get(i + 1);
