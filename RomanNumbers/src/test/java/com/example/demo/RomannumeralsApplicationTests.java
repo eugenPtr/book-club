@@ -92,7 +92,7 @@ class RomannumeralsApplicationTests {
 
     @Test
     void test_NumberFortyNineIsTranslatedCorrectly () {
-        assertEquals(arabicToRoman(49), "IL");
+        assertEquals(arabicToRoman(49), "XLIX");
     }
 
     @Test
@@ -108,6 +108,8 @@ class RomannumeralsApplicationTests {
             put(5, "V");
             put(9, "IX");
             put(10, "X");
+            put(40, "XL");
+            put(50, "L");
         }};
 
         while (i > 0) {
