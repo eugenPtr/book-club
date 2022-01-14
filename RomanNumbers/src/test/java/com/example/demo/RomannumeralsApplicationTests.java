@@ -110,10 +110,6 @@ class RomannumeralsApplicationTests {
             put(10, "X");
         }};
 
-        if (arabicToRomanMap.keySet().contains(i + 1)) {
-            return arabicToRomanMap.get(1) + arabicToRomanMap.get(i + 1);
-        }
-
         while (i > 0) {
             int biggestValue = 0;
             for (Map.Entry<Integer, String> pair: arabicToRomanMap.entrySet()) {
