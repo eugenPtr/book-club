@@ -100,6 +100,11 @@ class RomannumeralsApplicationTests {
         assertEquals(arabicToRoman(50), "L");
     }
 
+    @Test
+    void test_Number3589IsTranslatedCorrectly () {
+        assertEquals(arabicToRoman(3589), "MMMDLXXXIX");
+    }
+
 	private String arabicToRoman(int i) {
         StringBuilder result = new StringBuilder();
         Map<Integer, String> arabicToRomanMap = new LinkedHashMap<>(){{
@@ -110,6 +115,12 @@ class RomannumeralsApplicationTests {
             put(10, "X");
             put(40, "XL");
             put(50, "L");
+            put(90, "XC");
+            put(100, "C");
+            put(400, "CD");
+            put(500, "D");
+            put(900, "CM");
+            put(1000, "M");
         }};
 
         while (i > 0) {
