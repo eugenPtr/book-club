@@ -11,7 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class RomannumeralsApplicationTests {
 
-	@Test
+    public static final int MILS = 1000;
+
+    @Test
 	void contextLoads() {
 	}
 
@@ -105,6 +107,41 @@ class RomannumeralsApplicationTests {
         assertEquals(arabicToRoman(3589), "MMMDLXXXIX");
     }
 
+    @Test
+    void test_Number3999IsTranslatedCorrectly () {
+        assertEquals(arabicToRoman(3999), "MMMCMXCIX");
+    }
+
+    @Test
+    void test_Number4000IsTranslatedCorrectly () {
+        assertEquals(arabicToRoman(4000), "(IV)");
+    }
+
+    @Test
+    void test_Number4001IsTranslatedCorrectly () {
+        assertEquals(arabicToRoman(4001), "(IV)I");
+    }
+
+    @Test
+    void test_Number5000IsTranslatedCorrectly () {
+        assertEquals(arabicToRoman(5000), "(V)");
+    }
+
+    @Test
+    void test_Number5001IsTranslatedCorrectly () {
+        assertEquals(arabicToRoman(5001), "(V)I");
+    }
+
+    @Test
+    void test_Number6000IsTranslatedCorrectly () {
+        assertEquals("(MMMCMXCIX)CMXCIX", arabicToRoman(3999999));
+    }
+
+    @Test
+    void test_Number4000000IsTranslatedCorrectly () {
+        assertEquals("((CD))", arabicToRoman(400000000));
+    }
+
 	private String arabicToRoman(int i) {
         StringBuilder result = new StringBuilder();
         Map<Integer, String> arabicToRomanMap = new LinkedHashMap<>(){{
@@ -122,6 +159,11 @@ class RomannumeralsApplicationTests {
             put(900, "CM");
             put(1000, "M");
         }};
+
+        if (i > 3999) {
+            result.append("(").append(arabicToRoman(i / MILS)).append(")");
+            i -= i / MILS * MILS;
+        }
 
         while (i > 0) {
             int biggestValue = 0;
